@@ -11,7 +11,9 @@ export default function Page() {
   const list = useSelector(favoriteListSelector);
   console.log(list);
   useEffect(() => {
-    redirect("/login");
+    if (status !== "authenticated") {
+      redirect("/login");
+    }
   }, [status]);
   return (
     <main className="container py-10">

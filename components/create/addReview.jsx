@@ -41,7 +41,7 @@ export default function AddReview({ id }) {
   }, [status]);
 
   return (
-    <div>
+    <div className="py-5 space-y-2">
       <Textarea
         className="w-[min(30vw,300px)]"
         onChange={(e) => setBody(e.target.value)}
