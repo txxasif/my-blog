@@ -10,7 +10,7 @@ export default function BlogCard({ blog }) {
   return (
     <Link
       href={`/blog/${_id.toString()}`}
-      className={`${abhayaLibre.className}`}
+      className={`${abhayaLibre.className} `}
     >
       <div>
         <div className="flex items-center space-x-2 px-1">
@@ -25,7 +25,12 @@ export default function BlogCard({ blog }) {
             <p>{postedDate}</p>
           </div>
         </div>
-        <Image src={photo} width={500} height={350} />
+        <Image
+          className="sm:h-[min(19vw)]"
+          src={photo}
+          width={500}
+          height={350}
+        />
         <h1 className="text-2xl ">{title}</h1>
       </div>
     </Link>

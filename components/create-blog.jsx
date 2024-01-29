@@ -27,6 +27,8 @@ export function CreateUserBlog({ user }) {
   const { _id: id } = user;
   const queryClient = useQueryClient();
   const [form, setForm] = useState(initialValue);
+  const [isOpen, setOpen] = useState(false);
+
   const handleChange = (event) => {
     const { name, value, type, files } = event.target;
     console.log({ name, value, type, files });
@@ -56,6 +58,7 @@ export function CreateUserBlog({ user }) {
       return true;
     },
     onSuccess: () => {
+      setOpen(false);
       queryClient.invalidateQueries(["blogs"]);
     },
     onError: () => {
@@ -64,9 +67,14 @@ export function CreateUserBlog({ user }) {
   });
 
   return (
-    <Dialog>
+    <Dialog open={isOpen}>
       <DialogTrigger asChild>
-        <CreateIcon className="cursor-pointer w-10 h-10" />
+        <CreateIcon
+          onClick={() => {
+            setOpen(true);
+          }}
+          className="cursor-pointer w-10 h-10"
+        />
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
